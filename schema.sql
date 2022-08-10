@@ -1,0 +1,132 @@
+/*
+
+SET SERVEROUTPUT ON
+CALL wisielec_pkg.podaj_litere('');
+
+-- CALL wisielec_pkg.odgadnij_haslo('');
+
+*/
+
+CREATE TABLE HASLA (
+HASLO_ID NUMBER PRIMARY KEY, 
+HASLO VARCHAR2(30 CHAR) NOT NULL, 
+KATEGORIA VARCHAR2(15 CHAR)
+);
+
+
+CREATE TABLE WISIELEC(	
+WISIELEC_ID NUMBER NOT NULL, 
+WISIELEC VARCHAR2(4000 BYTE) NOT NULL
+);
+
+
+CREATE TABLE HI_SCORES (	
+USERNAME VARCHAR2(30 CHAR), 
+HASLO_ID NUMBER, 
+HASLO VARCHAR2(30 CHAR), 
+KATEGORIA VARCHAR2(15 CHAR), 
+PORA DATE, 
+PROBY NUMBER, 
+CZAS INTERVAL DAY (0) TO SECOND (0), 
+WYNIK VARCHAR2(15 BYTE), 
+SKUCHY NUMBER
+);
+
+CREATE OR REPLACE VIEW WYNIKI AS
+SELECT 
+HS.USERNAME UZYTKOWNIK, H.HASLO HASLO ,HS.HASLO POSTEP ,HS.KATEGORIA KATEGORIA
+, HS.PORA DZIEN, HS.WYNIK REZULTAT, HS.PROBY ILOSC_PROB ,HS.SKUCHY SKUCHY,
+EXTRACT(MINUTE FROM HS.CZAS)||':'||EXTRACT(SECOND FROM HS.CZAS) CZAS FROM HI_SCORES HS
+JOIN HASLA H
+ON H.HASLO_ID=HS.HASLO_ID;
+
+-- HASLA
+Insert into HASLA (HASLO_ID,HASLO,KATEGORIA) values ('1','A KTO UMARŁ, TEN NIE ŻYJE','CYTAT');
+Insert into HASLA (HASLO_ID,HASLO,KATEGORIA) values ('2','NIE MA WODY NA PUSTYNI','POWIEDZENIE');
+Insert into HASLA (HASLO_ID,HASLO,KATEGORIA) values ('3','CZTERY RAZY PO DWA RAZY','PIOSENKA');
+Insert into HASLA (HASLO_ID,HASLO,KATEGORIA) values ('4','SZOK! ROZPACZ! NIEDOWIERZANIE!','CYTAT');
+Insert into HASLA (HASLO_ID,HASLO,KATEGORIA) values ('5','MYŚLĘ, WIĘC JESTEM','SENTENCJA');
+Insert into HASLA (HASLO_ID,HASLO,KATEGORIA) values ('6','MIKOŁAJ KOPERNIK','OSOBA');
+Insert into HASLA (HASLO_ID,HASLO,KATEGORIA) values ('7','KSIĄDZ ROBAK','POSTAĆ');
+Insert into HASLA (HASLO_ID,HASLO,KATEGORIA) values ('8','BECZKOWE MOCNE','TRUNEK');
+
+
+
+-- Wisielec
+Insert into  WISIELEC (WISIELEC_ID,WISIELEC) values ('0',' 
+');
+
+Insert into  WISIELEC (WISIELEC_ID,WISIELEC) values ('1','
+
+
+
+|
+|
+|
+');
+Insert into  WISIELEC (WISIELEC_ID,WISIELEC) values ('2','
+
+|    
+|    
+|   
+|   
+|
+');
+Insert into  WISIELEC (WISIELEC_ID,WISIELEC) values ('3','
+_____
+|    
+|    
+|   
+|   
+|
+');
+Insert into  WISIELEC (WISIELEC_ID,WISIELEC) values ('4','
+_____
+|    |
+|    
+|   
+|   
+|
+');
+Insert into  WISIELEC (WISIELEC_ID,WISIELEC) values ('5','
+_____
+|    |
+|    o
+|   
+|   
+|
+');
+Insert into  WISIELEC (WISIELEC_ID,WISIELEC) values ('6','
+_____
+|    |
+|    o
+|    |
+|   
+|
+');
+Insert into  WISIELEC (WISIELEC_ID,WISIELEC) values ('7','
+_____
+|    |
+|    o
+|   /|
+|   
+|
+');
+Insert into  WISIELEC (WISIELEC_ID,WISIELEC) values ('8','
+_____
+|    |
+|    o
+|   /|\
+|   
+|
+');
+Insert into  WISIELEC (WISIELEC_ID,WISIELEC) values ('9','
+_____
+|    |
+|    o
+|   /|\
+|   /*\
+|
+');
+
+COMMIT;

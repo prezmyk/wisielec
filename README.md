@@ -12,5 +12,5 @@ Gra w wisielca w PL/SQL
 
 # Opis
 
-Hasła, opis i alfabet są w języku polski, przez co użytkowanie w SQL*Plus, ale nie niemożliwe ;)
+Hasła, opis i alfabet są w języku polski, przez co użytkowanie w SQL*Plus jest problematyczne, ale nie niemożliwe ;)
 

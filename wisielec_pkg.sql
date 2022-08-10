@@ -93,8 +93,9 @@ PROCEDURE podaj_litere(p_litera VARCHAR2) IS
         LOOP
         SELECT substr(haslo,i,1) INTO v_litera_hasla FROM hasla WHERE haslo_id = v_haslo_id;    
             IF v_litera_hasla = UPPER(p_litera) THEN
-                 --  Nadpisanie litery w danej pozycji jezeli pasuje w tabeli haslo_wylosowane;
-                  v_haslo_wylosowane :=  zmiana_litery(v_haslo_wylosowane,UPPER(p_litera), i) ;                                   -- Ustawienie flagi, ze litera wystapila
+                 --  Nadpisanie litery w danej pozycji jezeli pasuje;
+                  v_haslo_wylosowane :=  zmiana_litery(v_haslo_wylosowane,UPPER(p_litera), i) ;
+				  -- Ustawienie flagi, ze litera wystapila
                  v_flag_litera := TRUE;                  
             END IF;   
         END LOOP;
